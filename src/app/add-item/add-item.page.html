@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Add Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="itemForm" (ngSubmit)="addItem()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input formControlName="title" placeholder="Enter item title"></ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="itemForm.controls['title'].invalid && itemForm.controls['title'].touched">
+      <p>Title is required.</p>
+    </ion-text>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description" placeholder="Enter item description"></ion-textarea>
+    </ion-item>
+    <ion-text color="danger" *ngIf="itemForm.controls['description'].invalid && itemForm.controls['description'].touched">
+      <p>Description is required.</p>
+    </ion-text>
+
+    <ion-button expand="full" type="submit" [disabled]="itemForm.invalid">Add Item</ion-button>
+  </form>
+</ion-content>
