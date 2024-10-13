@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'landing',
+    redirectTo: 'items',
     pathMatch: 'full'
   },
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
   // Ajoute d'autres routes ici si nécessaire
   {
     path: '**',
-    redirectTo: 'landing'  // Redirection des chemins non trouvés vers la page de 'landing'
+    redirectTo: 'items'  // Redirection des chemins non trouvés vers la page de 'landing'
   }
 ];
 
