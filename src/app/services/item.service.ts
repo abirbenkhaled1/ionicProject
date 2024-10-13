@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, map, Observable} from 'rxjs';
 
 
 
@@ -17,9 +17,7 @@ export class ItemService {
   private items = new BehaviorSubject<Item[]>([]);
   private nextId = 1;
 
-  getItems() {
-    return this.items.asObservable();
-  }
+
 
   addItem(title: string, description: string) {
     const newItem: Item = { id: this.nextId++, title, description };

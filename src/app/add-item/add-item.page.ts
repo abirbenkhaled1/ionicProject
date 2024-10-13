@@ -32,23 +32,20 @@ export class AddItemPage   {
 
   async addItem() {
     if (this.itemForm.valid) {
-      // Récupérer les valeurs du formulaire
+
+      const  { title, description } = this.itemForm.value;
 
       const itemToPush = {
-        name: "hello",
-        description:" this.itemDescription",
-        // Remove the unnecessary property
-        // otherProperties: ...
+        title: title,
+        description: description
       };
+
       try {
-        // Add item directly to Firestore using AngularFirestore
         this.db.list('items').push(itemToPush).then(res => {
           console.log('Item added successfully');
         }).catch(err => {
           console.error('Error adding item:', err);
         });
-
-        console.log('Document reference:'); // For reference
 
         // Afficher un message de succès
         await this.showToast('Item added successfully!');

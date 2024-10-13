@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { Item, ItemService } from '../services/item.service';
+import {AngularFireDatabase} from "@angular/fire/compat/database";
 
 @Component({
   selector: 'app-items',
   templateUrl: './items.page.html',
   styleUrls: ['./items.page.scss'],
 })
-export class ItemsPage implements OnInit {
-
-  items$: Observable<Item[]>;
+export class ItemsPage   {
 
 
-  constructor(private itemService: ItemService) { 
-    this.items$ = this.itemService.getItems();
+
+  constructor(private itemService: ItemService,private  db: AngularFireDatabase) {
   }
 
-  ngOnInit() { }
+
+
 
   deleteItem(id: number) {
     this.itemService.deleteItem(id);
   }
+
 
 }
