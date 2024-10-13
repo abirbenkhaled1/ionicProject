@@ -25,7 +25,7 @@ export class ItemsPage implements OnInit {
   }
 
   getItemsFromDatabase() {
-    // Replace 'items' with the path to your items in the Realtime Database
+    // Fetch items from Firebase Realtime Database
     this.db.list<Item>('items').snapshotChanges().subscribe(actions => {
       this.items = actions.map(action => {
         const data = action.payload.val() as Item; // Get the data
@@ -41,12 +41,11 @@ export class ItemsPage implements OnInit {
   }
 
   deleteItem(id: string) {
-    // Remove the item from the database using its ID
+    // Remove the item from Firebase using its ID
     this.db.list('items').remove(id).then(() => {
       console.log(`Item with ID ${id} deleted successfully`);
     }).catch(error => {
       console.error("Error deleting item:", error);
     });
   }
-
 }

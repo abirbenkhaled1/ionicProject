@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/reset-password/reset-password.module').then(m => m.ResetPasswordPageModule)
   },
   {
+    path: 'items/edit/:id',  // Move this route up
+    loadChildren: () => import('./items/edit/edit.module').then(m => m.EditPageModule)
+  },
+  {
     path: 'items',
     loadChildren: () => import('./items/items.module').then(m => m.ItemsPageModule)
   },
@@ -35,11 +39,11 @@ const routes: Routes = [
     path: 'add-item',
     loadChildren: () => import('./add-item/add-item.module').then(m => m.AddItemPageModule)
   },
-  // Ajoute d'autres routes ici si nécessaire
+  // Add other routes here if necessary
   {
     path: '**',
-    redirectTo: 'items'  // Redirection des chemins non trouvés vers la page de 'landing'
-  }
+    redirectTo: 'items'  // Redirect unknown paths to 'items'
+  },
 ];
 
 @NgModule({
@@ -48,4 +52,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -11,14 +11,17 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-label>
-        <h2>{{ item.id }}</h2>
-
         <h2>{{ item.title }}</h2>
-
         <p>{{ item.description }}</p>
       </ion-label>
-      <ion-button fill="outline" color="danger" (click)="deleteItem( item.id )">
-        Delete
+      <!-- Edit button -->
+      <ion-button fill="outline" color="primary" [routerLink]="['/items/edit', item.id]">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+      
+      <!-- Delete button -->
+      <ion-button fill="outline" color="danger" (click)="deleteItem(item.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
     </ion-item>
   </ion-list>
