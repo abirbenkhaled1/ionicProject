@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: "ionic-project-a8433.appspot.com",
     messagingSenderId: "709181395619",
     appId: "1:709181395619:web:504447422ca370c4436516",
-    measurementId: "G-LJYSJE4B6D"
+    measurementId: "G-LJYSJE4B6D",
+    databaseURL: 'https://ionic-project-a8433-default-rtdb.europe-west1.firebasedatabase.app/'
   }
 };
 
