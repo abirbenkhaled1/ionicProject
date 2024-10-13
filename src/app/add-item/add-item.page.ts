@@ -50,8 +50,7 @@ export class AddItemPage   {
         // Afficher un message de succès
         await this.showToast('Item added successfully!');
 
-        // Rediriger vers la liste des articles
-        // this.router.navigate(['/items']);
+         this.router.navigate(['/items']);
       } catch (error) {
         // Gérer les erreurs
         console.error('Error adding item:', error);
