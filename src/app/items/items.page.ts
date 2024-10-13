@@ -10,6 +10,8 @@ import {AngularFireDatabase} from "@angular/fire/compat/database";
 })
 export class ItemsPage   {
 
+  items$: Observable<Item[]> | undefined;
+
 
 
   constructor(private itemService: ItemService,private  db: AngularFireDatabase) {
@@ -21,6 +23,7 @@ export class ItemsPage   {
   deleteItem(id: number) {
     this.itemService.deleteItem(id);
   }
+
 
 
 }
