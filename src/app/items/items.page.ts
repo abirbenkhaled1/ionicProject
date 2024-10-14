@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from "@angular/fire/compat/database";
+import { AlertController } from '@ionic/angular'; // Import AlertController
 
 interface Item {
   id: string;
@@ -15,10 +16,10 @@ interface Item {
 export class ItemsPage implements OnInit {
 
   items: Item[] = [];
-  filteredItems: Item[] = []; // New array for filtered items
-  searchTerm: string = ''; // Search term
+  filteredItems: Item[] = []; 
+  searchTerm: string = ''; 
 
-  constructor(private db: AngularFireDatabase) {}
+  constructor(private db: AngularFireDatabase, private alertController: AlertController) {} 
 
   ngOnInit() {
     this.getItemsFromDatabase();
@@ -35,14 +36,35 @@ export class ItemsPage implements OnInit {
           description: data.description || '',
         };
       });
-      this.filteredItems = this.items; // Initialize filtered items
+      this.filteredItems = this.items; 
     });
+  }
+
+  async confirmDelete(id: string) { 
+    const alert = await this.alertController.create({
+      header: 'Confirm Delete',
+      message: `Do you really want to delete item "${id}"?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Delete',
+          handler: () => {
+            this.deleteItem(id); 
+          },
+        },
+      ],
+    });
+
+    await alert.present();
   }
 
   deleteItem(id: string) {
     this.db.list('items').remove(id).then(() => {
       console.log(`Item with ID ${id} deleted successfully`);
-      this.getItemsFromDatabase(); // Refresh the list
+      this.getItemsFromDatabase();
     }).catch(error => {
       console.error("Error deleting item:", error);
     });
@@ -50,7 +72,7 @@ export class ItemsPage implements OnInit {
 
   filterItems() {
     if (!this.searchTerm) {
-      this.filteredItems = this.items; // If no search term, show all items
+      this.filteredItems = this.items; 
       return;
     }
 

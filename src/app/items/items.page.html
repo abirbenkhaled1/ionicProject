@@ -5,7 +5,10 @@
       <ion-button routerLink="/add-item" fill="clear">
         <ion-icon slot="icon-only" name="add"></ion-icon>
       </ion-button>
-          </ion-buttons>
+      <ion-button routerLink="/landing" fill="clear">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -21,7 +24,7 @@
       <ion-button fill="outline" color="primary" [routerLink]="['/items/edit', item.id]">
         <ion-icon slot="icon-only" name="create"></ion-icon>
       </ion-button>
-      <ion-button fill="outline" color="danger" (click)="deleteItem(item.id)">
+      <ion-button fill="outline" color="danger" (click)="confirmDelete(item.id)"> <!-- Update here -->
         <ion-icon slot="icon-only" name="trash"></ion-icon>
       </ion-button>
     </ion-item>

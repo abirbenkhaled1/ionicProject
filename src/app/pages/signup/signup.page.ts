@@ -55,7 +55,7 @@ export class SignupPage implements OnInit {
         if (user) {
           await loading.dismiss();
           // Navigate to home on successful login
-          this.router.navigate(['/home']);
+          this.router.navigate(['/item']);
           // Show a success toast
           this.showToast('Registration successful', 'success');
         }

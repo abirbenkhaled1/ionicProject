@@ -65,7 +65,7 @@ export class LoginPage implements OnInit {
         await this.showToast('Login successful!');
 
         // Navigate to the home page after a successful login
-        this.router.navigate(['/home']);
+        this.router.navigate(['/items']);
         console.log('Navigation to home page');
       } catch (error: any) {
         console.error('Error during login:', error);
